@@ -32,7 +32,7 @@ type Workflows struct {
 func Connect() error {
 	err := godotenv.Load()
 	if err != nil {
-		panic("Error loading .env file")
+		// panic("Error loading .env file")
 	}
 
 	dbname := os.Getenv("PGDATABASE")
