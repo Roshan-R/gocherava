@@ -41,6 +41,8 @@ func Connect() error {
 	port := os.Getenv("PGPORT")
 	user := os.Getenv("PGUSER")
 
+	fmt.Println(dbname)
+
 	db, err = sql.Open("postgres", fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname))
 	if err != nil {
 		return err
