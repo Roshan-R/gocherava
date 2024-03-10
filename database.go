@@ -32,18 +32,11 @@ type Workflows struct {
 func Connect() error {
 	err := godotenv.Load()
 	if err != nil {
-		// panic("Error loading .env file")
+		panic("Error loading .env file")
 	}
+	connStr := os.Getenv("CONN_STR")
 
-	dbname := os.Getenv("PGDATABASE")
-	host := os.Getenv("PGHOST")
-	password := os.Getenv("PGPASSWORD")
-	port := os.Getenv("PGPORT")
-	user := os.Getenv("PGUSER")
-
-	fmt.Println(dbname)
-
-	db, err = sql.Open("postgres", fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname))
+	db, err = sql.Open("postgres", connStr)
 	if err != nil {
 		return err
 	}
